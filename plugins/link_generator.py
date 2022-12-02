@@ -37,7 +37,7 @@ async def batch(client: Client, message: Message):
     base64_string = await encode(string)
     link = f"https://telegram.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗 ", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
     await second_message.reply_text(f"<b>Here is your link</b>\n\n{link} \n\n`` {link} ``", quote=True, reply_markup=reply_markup)
 
 
