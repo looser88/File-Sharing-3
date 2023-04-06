@@ -27,6 +27,10 @@ OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 #Port
 PORT = os.environ.get("PORT", "8080")
 
+#shortner
+SHORTLINK_URL = environ.get('SHORTLINK_URL', 'Fire-links.in')
+SHORTLINK_API = environ.get('SHORTLINK_API', '4b4ee8f8717d775262ef74432e202b8be8597b62')
+
 #Database 
 DB_URI = os.environ.get("DATABASE_URL", "")
 DB_NAME = os.environ.get("DATABASE_NAME", "fileshare2")
