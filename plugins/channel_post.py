@@ -26,8 +26,9 @@ async def channel_post(client: Client, message: Message):
     string = f"get-{converted_id}"
     base64_string = await encode(string)
     link = f"https://telegram.me/{client.username}?start={base64_string}"
+    ml = link
 
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton( url=await get_shortlink(link))]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton( url=await get_shortlink(ml))]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗 ", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
 
     await reply_text.edit(f"<b>Here is your link</b>\n\n{link} \n\n<code>{link}</code> ", reply_markup=reply_markup, disable_web_page_preview = True)
