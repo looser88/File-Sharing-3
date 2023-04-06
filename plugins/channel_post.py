@@ -28,10 +28,10 @@ async def channel_post(client: Client, message: Message):
     link = f"https://telegram.me/{client.username}?start={base64_string}"
     ml = link
 
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton( url = get_shortlink(ml))]])
+    
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗 ", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
 
-    await reply_text.edit(f"<b>Here is your link</b>\n\n{link} \n\n<code>{link}\n\n{get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}}")</code> ", reply_markup=reply_markup, disable_web_page_preview = True)
+    await reply_text.edit(f"<b>Here is your link</b>\n\n{link} \n\n<code>{link}\n\n{get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")}</code> ", reply_markup=reply_markup, disable_web_page_preview = True)
 
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
