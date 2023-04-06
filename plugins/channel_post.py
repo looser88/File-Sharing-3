@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON, SHORTLINK_URL, SHORTLINK_API
+from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
@@ -26,56 +26,10 @@ async def channel_post(client: Client, message: Message):
     base64_string = await encode(string)
     link = f"https://telegram.me/{client.username}?start={base64_string}"
 
-    async def get_shortlink(link):
-        URL = SHORTLINK_URL
-        API = SHORTLINK_API
-    https = link.split(":")[0] #splitting https or http from link
-    if "http" == https: #if https == "http":
-        https = "https"
-        link = link.replace("http", https) #replacing http to https
-    if URL == "api.shareus.in":
-        url = f'https://{URL}/shortLink'
-        params = {
-            "token": API,
-            "format": "json",
-            "link": link,
-        }
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-                    data = await response.json(content_type="text/html")
-                    if data["status"] == "success":
-                        return data["shortlink"]
-                    else:
-                        logger.error(f"Error: {data['message']}")
-                        llink = f'https://{URL}/shortLink?token={API}&format=json&link={link}'
-        except Exception as e:
-            logger.error(e)
-            llink = f'https://{URL}/shortLink?token={API}&format=json&link={link}'
-    else:
-        url = f'https://{URL}/api'
-        params = {
-            "api": API,
-            "url": link,
-        }
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
-                    data = await response.json()
-                    if data["status"] == "success":
-                        return data["shortenedUrl"]
-                    else:
-                        logger.error(f"Error: {data['message']}")
-                        llink = f'https://{URL}/api?api={API}&link={link}'
-        except Exception as e:
-            logger.error(e)
-            llink = f'https://{URL}/api?api={API}&link={link}'
-        
-    
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗 ", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
 
-    await reply_text.edit(f"<b>Here is your link</b>\n\n{llink} \n\n {link} ", reply_markup=reply_markup, disable_web_page_preview = True)
+    await reply_text.edit(f"<b>Here is your link</b>\n\n{link} \n\n<code>{link}</code> ", reply_markup=reply_markup, disable_web_page_preview = True)
 
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
@@ -91,7 +45,7 @@ async def new_post(client: Client, message: Message):
     base64_string = await encode(string)
     link = f"https://telegram.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗 ", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
     
     try:
         await message.edit_reply_markup(reply_markup)
