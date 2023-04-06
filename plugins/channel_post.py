@@ -26,7 +26,7 @@ async def channel_post(client: Client, message: Message):
     string = f"get-{converted_id}"
     base64_string = await encode(string)
     link = f"https://telegram.me/{client.username}?start={base64_string}"
-    ml = link
+
 
     
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" 🔗 LINK 🔗 ", url=f'https://telegram.me/{client.username}?start={base64_string}')]])
