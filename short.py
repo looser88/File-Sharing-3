@@ -1,5 +1,5 @@
 import logging
-
+import aiohttp
 from config import SHORTLINK_URL, SHORTLINK_API
 
 async def get_shortlink(link):
