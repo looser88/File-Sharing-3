@@ -6,9 +6,17 @@ from bot import Bot
 from config import ADMINS, SHORTLINK_API
 from helper_func import encode, get_message_id
 import requests
+import random
+import string
+
+def generate_random_alphanumeric():
+    """Generate a random 8-letter alphanumeric string."""
+    characters = string.ascii_letters + string.digits
+    random_chars = ''.join(random.choice(characters) for _ in range(8))
+    return random_chars
 
 def get_short(url):
-    rget = requests.get(f"https://fire-links.in/api", data={"api": SHORTLINK_API, "url": url, "alias":"CustomAlias"}).json()
+    rget = requests.get(f"https://fire-links.in/api", data={"api": SHORTLINK_API, "url": url, "alias": generate_random_alphanumeric()}).json()
     if rget["status"] == "success":
         return rget["shortenedUrl"]
     else:
