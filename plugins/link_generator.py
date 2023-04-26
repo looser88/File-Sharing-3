@@ -16,8 +16,8 @@ def generate_random_alphanumeric():
     return random_chars
 
 def get_short(url):
-    rget = requests.get(f"https://fire-links.in/api", data={"api": SHORTLINK_API, "url": url, "alias": generate_random_alphanumeric()}).json()
-    if rget["status"] == "success":
+    rget = requests.get(f"https://fire-links.in/api", json={"api": SHORTLINK_API, "url": url, "alias": generate_random_alphanumeric()}).json()
+    if rget["status"] == "success" or rget.status_code == 200:
         return rget["shortenedUrl"]
     else:
         return url
