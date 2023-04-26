@@ -43,8 +43,8 @@ async def batch(client: Client, message: Message):
 
     string = f"get-{f_msg_id * abs(client.db_channel.id)}-{s_msg_id * abs(client.db_channel.id)}"
     base64_string = await encode(string)
-    linkk = f"https://telegram.me/{client.username}?start={base64_string}"
-    link = get_short(linkk)
+    link = f"https://telegram.me/{client.username}?start={base64_string}"
+    linkk = get_short(link)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]])
     
