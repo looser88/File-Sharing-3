@@ -10,19 +10,19 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "6180766269:AAHNQDOaKszLPySVJnh2WAOdhaAHHiHbcBY")
 
 #Your API ID from my.telegram.org
-APP_ID = int(os.environ.get("APP_ID", ""))
+APP_ID = int(os.environ.get("APP_ID", "10755921"))
 
 #Your API Hash from my.telegram.org
-API_HASH = os.environ.get("API_HASH", "")
+API_HASH = os.environ.get("API_HASH", "d5e49fd3637cba407f17807d31c77977")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001842556179"))
 
 #OWNER ID
-OWNER_ID = int(os.environ.get("OWNER_ID", ""))
+OWNER_ID = int(os.environ.get("OWNER_ID", "5636224141"))
 
 #Port
 PORT = os.environ.get("PORT", "8080")
@@ -32,7 +32,7 @@ SHORTLINK_URL = environ.get('SHORTLINK_URL', 'Fire-links.in')
 SHORTLINK_API = environ.get('SHORTLINK_API', '4b4ee8f8717d775262ef74432e202b8be8597b62')
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://cheesy:cheesy.8697@cluster0.kjg8cfb.mongodb.net/?retryWrites=true&w=majority")
 DB_NAME = os.environ.get("DATABASE_NAME", "fileshare2")
 
 #force sub channel id, if you want enable force sub
@@ -68,7 +68,7 @@ BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
 USER_REPLY_TEXT = "❌Don't send me messages directly I'm only File Share bot!"
 
 ADMINS.append(OWNER_ID)
-ADMINS.append(1250450587)
+ADMINS.append(5636224141)
 
 LOG_FILE_NAME = "filesharingbot.txt"
 
