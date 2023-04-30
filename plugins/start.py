@@ -62,8 +62,7 @@ async def start_command(client: Client, message: Message):
         except:
             await message.reply_text("Something went wrong..!")
             return
-           await asyncio.sleep(10)
-           await temp_msg.delete()
+          
 
 
         for msg in messages:
@@ -83,11 +82,13 @@ async def start_command(client: Client, message: Message):
                 ad = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(10)
                 await ad.delete()
+                await temp_msg.delete()
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 ad = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(10)
                 await ad.delete()
+                await temp_msg.delete()
             except:
                 pass
         return
