@@ -27,11 +27,11 @@ async def channel_post(client: Client, message: Message):
     base64_string = await encode(string)
     Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
     Slink = get_short(Tlink)
-    
+#   today= datetime.datetime.now()
     tomorrow = datetime.now() + timedelta(1)
-    ptoday= today.strftime("%d - %m - %Y")
-
-    pweek = tomorrow.strftime("%A")
+#   ptoday= today.strftime("%d - %m - %Y")
+    ptomorrow = tomorrow.strftime('"%d - %m - %Y"')
+#   pweek = tomorrow.strftime("%A")
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
 
