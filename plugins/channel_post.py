@@ -27,13 +27,15 @@ async def channel_post(client: Client, message: Message):
     base64_string = await encode(string)
     Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
     Slink = get_short(Tlink)
-    now = datetime.datetime.now()
-    date = now.strftime("%d - %m - %Y")
-    week = now.strftime("%A")
+    today= datetime.datetime.now()
+    tomorrow = datetime.now() + timedelta(1)
+    ptoday= today.strftime("%d - %m - %Y")
+    ptomorrow = tomorrow.strftime('"%d - %m - %Y"')
+    pweek = #today or tomorrow.strftime("%A")
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
 
-    await reply_text.edit(f"<b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{date}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1", disable_web_page_preview = True)
+    await reply_text.edit(f"<b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1", disable_web_page_preview = True)
 
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
