@@ -30,8 +30,8 @@ async def channel_post(client: Client, message: Message):
     now = datetime.datetime.now()
     date = now.strftime("%d - %m - %Y")
     week = now.strftime("%A")
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
 
     await reply_text.edit(f"<b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{date}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{link}\n{link}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1", disable_web_page_preview = True)
 
@@ -47,9 +47,10 @@ async def new_post(client: Client, message: Message):
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)
-    link = get_short(f"https://telegram.me/{client.username}?start={base64_string}")
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]])
+    Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
+    link = get_short(Tlink)
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
     
     try:
         await message.edit_reply_markup(reply_markup)
