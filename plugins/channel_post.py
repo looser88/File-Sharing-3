@@ -27,8 +27,8 @@ async def channel_post(client: Client, message: Message):
     base64_string = await encode(string)
     link = get_short(f"https://telegram.me/{client.username}?start={base64_string}")
     now = datetime.datetime.now()
-    date = now.strftime("%d-%b-20%y")
-    week = now.strftime("%a")
+    date = now.strftime("%d-%b-%Y")
+    week = now.strftime("%A")
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]])
 
