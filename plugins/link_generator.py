@@ -3,7 +3,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from bot import Bot
-from config import ADMINS, SHORTLINK_API
+from config import ADMINS, SHORTLINK_URL, SHORTLINK_API
 from helper_func import encode, get_message_id
 import requests
 import random
@@ -16,7 +16,7 @@ def generate_random_alphanumeric():
     return random_chars
 
 def get_short(url):
-    rget = requests.get(f"https://fire-links.in/api?api={SHORTLINK_API}&url={url}&alias={generate_random_alphanumeric()}")
+    rget = requests.get(f"https://{SHORTLINK_URL}/api?api={SHORTLINK_API}&url={url}&alias={generate_random_alphanumeric()}")
     rjson = rget.json()
     if rjson["status"] == "success" or rget.status_code == 200:
         return rjson["shortenedUrl"]
@@ -52,12 +52,12 @@ async def batch(client: Client, message: Message):
 
     string = f"get-{f_msg_id * abs(client.db_channel.id)}-{s_msg_id * abs(client.db_channel.id)}"
     base64_string = await encode(string)
-    linkk = f"https://telegram.me/{client.username}?start={base64_string}"
-    link = get_short(linkk)
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]])
+    Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
+    Slink = get_short(Tlink)
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=Slink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=Slink)]])
     
-    await second_message.reply_text(f"<b>Here is your link</b>\n\n{link} \n\n<code>{link}</code>", quote=True, reply_markup=reply_markup)
+    await second_message.reply_text(f"<b>Here is your link</b>\n\n{Tlink} \n\n<code>{Slink}</code>", quote=True, reply_markup=reply_markup)
 
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('genlink'))
@@ -75,9 +75,9 @@ async def link_generator(client: Client, message: Message):
             continue
 
     base64_string = await encode(f"get-{msg_id * abs(client.db_channel.id)}")
-    link = f"https://telegram.me/{client.username}?start={base64_string}"
-    link = get_short(link)
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]])
+    Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
+    Slink = get_short(Tlink)
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=Tlink)]])
     
-    await channel_message.reply_text(f"<b>Here is your link</b>\n\n https://telegram.me/{client.username}?start={base64_string} \n{linkk}\n<code>{link}</code>", quote=True, reply_markup=reply_markup)
+    await channel_message.reply_text(f"<b>Here is your link</b>\n\n https://telegram.me/{client.username}?start={base64_string} \n{Tlink}\n<code>{link}</code>", quote=True, reply_markup=reply_markup)
