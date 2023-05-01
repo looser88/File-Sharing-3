@@ -56,7 +56,7 @@ FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {first}\n\n<b>You need to
 CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<b>📁ғɪʟᴇ ɴᴀᴍᴇ</b> : <code>{filename}</code> \n<b>\n🎬Jᴏɪɴ ᴜs :<a href='https://t.me/dot_serials'>𝐃𝐎𝐓 𝐒𝐄𝐑𝐈𝐀𝐋𝐒</a>\n</b>")
 
 #set True if you want to prevent users from forwarding files from bot
-PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "True") == "True" else False
+PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
 
 #Set true if you want Disable your Channel Posts Share button
 if os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True':
