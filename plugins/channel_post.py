@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 from plugins.link_generator import get_short
 from bot import Bot
-from config import ADMINS, CHANNEL_ID, DISABLE_CHANNEL_BUTTON
+from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
@@ -45,7 +45,15 @@ async def new_post(client: Client, message: Message):
 
     if DISABLE_CHANNEL_BUTTON:
         return
-
+    try:
+        post_message = await send_message(ECHANNEL_ID,  caption="⚠️Generated for filestore.", sable_notification=False)
+    except FloodWait as e:
+        await asyncio.sleep(e.x)
+        post_message = await send_message(ECHANNEL_ID,  caption="⚠️Generated for filestore.", sable_notification=False)
+    except Exception as e:
+        print(e)
+        await reply_text.edit_text("Something went Wrong..!")
+        return 
     converted_id = message.id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
     base64_string = await encode(string)
