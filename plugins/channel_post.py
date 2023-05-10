@@ -32,8 +32,8 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     try:
         post_message = await send_message(chat_id = ECHANNEL_ID,  caption="⚠️Generated for filestore.", disable_notification=True)
         
@@ -53,8 +53,8 @@ async def new_post(client: Client, message: Message):
     base64_string = await encode(string)
     Tlink = f"https://telegram.me/{client.username}?start={base64_string}"
     link = get_short(Tlink)
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔗Share URL", url=Tlink)]])
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("↔️Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[C]Share URL", url=Tlink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[D]Share URL", url=Tlink)]])
     
     try:
         await message.edit_reply_markup(reply_markup)
