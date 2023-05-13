@@ -11,7 +11,7 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_till_chars(test_str, check_str, idx=0):
+def extract_till_chars(client: Client, message: Message):
     if idx == len(test_str):
         return ""
     temp = test_str[:idx+1]
