@@ -11,7 +11,7 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-async def channel_post(bot, client: Client, message: Message):
+async def channel_post(bot: Bot, client: Client, message: Message):
     
     await bot.send_message(ECHANNEL_ID, "🔥new post detected")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
