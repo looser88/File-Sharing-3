@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    await bot.send_message(chat_id = ECHANNEL_ID,  caption="🔥new post detected")
+    await send_message(chat_id = ECHANNEL_ID,  caption="🔥new post detected")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
