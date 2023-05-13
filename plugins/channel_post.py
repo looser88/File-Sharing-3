@@ -20,12 +20,12 @@ def extract_till_chars(test_str, check_str, idx=0):
     else:
         return extract_till_chars(test_str, check_str, idx+1)
  
-# Driver Code 
-media = message.video or message.document 
-test_str = media.file_name
-check_str = "S01"
-res = extract_till_chars(test_str, check_str)
-fname = format(res[:-4])
+  # Driver Code 
+    media = message.video or message.document 
+    test_str = media.file_name
+    check_str = "S01"
+    res = extract_till_chars(test_str, check_str)
+    fname = format(res[:-4])
  
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
