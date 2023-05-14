@@ -15,7 +15,7 @@ def extract_name(full_str, search, idx=0):
     if idx == len(full_str):
         return ""
     temp = full_str[:idx+1]
-    if all(char in temp for char in full_str):
+    if all(char in temp for char in search):
         return temp
     else:
         return extract_name(full_str, search, idx+1)
