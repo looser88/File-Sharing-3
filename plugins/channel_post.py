@@ -42,12 +42,14 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
+## for serial name only 
     media = message.video or message.document
     test_string = media.file_name
     spl_word = 'S'
     res = test_string.partition(spl_word)[0]
     fname = res[:-1]
-   # pic = find_pic(fname)
+## for adding custom picture 
+    pic = find_pic(fname)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
