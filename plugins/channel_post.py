@@ -11,8 +11,23 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 
+def extract_name(full_str, search, idx=0):
+    if idx == len(full_str):
+        return ""
+    temp = full_str[:idx+1]
+    if all(char in temp for char in full_str):
+        return temp
+    else:
+        return extract_name(full_str, search, idx+1)
+ 
+# Driver Code
+    media = message.video or message.document
+    full_str = media.file_name
+    search = "S"
+    fname = extract_name(full_str, search)[:-2]
+ 
 def find_pic(fname): 
-    if fname == "Punyavathi":
+    if fname == "Olavina.Nildana":
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
     else:
        pic = "https://graph.org/file/954f49350f9b6e52fa545.jpg" 
@@ -42,13 +57,6 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
-## for serial name only 
-    media = message.video or message.document
-    test_string = media.file_name
-    spl_word = 'S'
-    res = test_string.partition(spl_word)[0]
-    fname = res[:-1]
-## for adding custom picture 
 ##    pic = find_pic(fname)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
