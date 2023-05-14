@@ -2,7 +2,7 @@
 
 import asyncio
 from pyrogram import filters, Client
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 from pyrogram.errors import FloodWait
 from plugins.link_generator import get_short
 from bot import Bot
@@ -11,17 +11,17 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 
-#def find_pic(fname):
-   # if fname == "Punyavathi":
-     #  pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
-   # else:
-     #  pic = "https://graph.org/file/954f49350f9b6e52fa545.jpg" 
- #   return pic
+def find_pic(fname): 
+    if fname == "Punyavathi":
+       pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
+    else:
+       pic = "https://graph.org/file/954f49350f9b6e52fa545.jpg" 
+    return pic
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    e_pic = await client.send_photo(ECHANNEL_ID, photo="https://graph.org/file/954f49350f9b6e52fa545.jpg", caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, InputMediaPhoto(pic), caption=f"🔥please wait....")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
