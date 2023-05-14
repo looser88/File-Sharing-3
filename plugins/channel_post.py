@@ -21,7 +21,7 @@ def find_pic(fname):
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    e_pic = await client.send_photo(ECHANNEL_ID, InputMediaPhoto(pic), caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, InputMediaPhoto(find_pic(fname)), caption=f"🔥please wait....")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
@@ -49,7 +49,7 @@ async def channel_post(client: Client, message: Message):
     res = test_string.partition(spl_word)[0]
     fname = res[:-1]
 ## for adding custom picture 
-    pic = find_pic(fname)
+##    pic = find_pic(fname)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
