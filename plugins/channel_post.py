@@ -10,7 +10,6 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
-
 def extract_name(full_str, search, idx=0):
     if idx == len(full_str):
         return ""
@@ -21,11 +20,11 @@ def extract_name(full_str, search, idx=0):
         return extract_name(full_str, search, idx+1)
  
 # Driver Code
-    media = message.video or message.document
-    full_str = media.file_name
-    search = "S"
-    fname = extract_name(full_str, search)[:-2]
- 
+media = message.video or message.document
+full_str = media.file_name
+search = "S"
+fname = extract_name(full_str, search, idx+1)[:-2]
+
 def find_pic(fname): 
     if fname == "Olavina.Nildana":
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
