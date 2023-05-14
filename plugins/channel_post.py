@@ -10,27 +10,25 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_till_chars(client: Client, message: Message):
-    if idx == len(test_str):
-        return ""
-    temp = test_str[:idx+1]
-    if all(char in temp for char in check_str):
-        return temp
+
+def find_pic(fname):
+    if fname == "Punyavathi":
+       pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
     else:
-        return extract_till_chars(test_str, check_str, idx+1)
- 
-  # Driver Code 
-    media = message.video or message.document 
-    test_str = media.file_name
-    check_str = "S01"
-    res = extract_till_chars(test_str, check_str)
-    fname = format(res[:-4])
- 
+       pic = "https://graph.org/file/954f49350f9b6e52fa545.jpg" 
+    return pic
+# 
+    media = message.video or message.document
+    test_string = media.file_name
+    spl_word = 'S'
+    res = test_string.partition(spl_word)[0]
+    fname = res[:-1]
+    pic = find_pic(fname)
+
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    await client.send_photo(ECHANNEL_ID, photo="https://graph.org/file/954f49350f9b6e52fa545.jpg", caption=f"{fname}")
+    await client.send_photo(ECHANNEL_ID, photo(pic), caption=f"{fname}")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
