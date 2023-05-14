@@ -17,18 +17,11 @@ def find_pic(fname):
     else:
        pic = "https://graph.org/file/954f49350f9b6e52fa545.jpg" 
     return pic
-# 
-    media = message.video or message.document
-    test_string = media.file_name
-    spl_word = 'S'
-    res = test_string.partition(spl_word)[0]
-    fname = res[:-1]
-    pic = find_pic(fname)
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    await client.send_photo(ECHANNEL_ID, photo=({pic}), caption=f"{fname}")
+    e_pic = await client.send_photo(ECHANNEL_ID, photo="https://graph.org/file/954f49350f9b6e52fa545.jpg", caption=f"please wait....")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
@@ -49,9 +42,16 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
+    media = message.video or message.document
+    test_string = media.file_name
+    spl_word = 'S'
+    res = test_string.partition(spl_word)[0]
+    fname = res[:-1]
+    pic = find_pic(fname)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
+    await e_pic.edit(ECHANNEL_ID, photo=f"{pic}", caption=f"{fnane}")
     await reply_text.edit(f"{fname}\n <b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1", disable_web_page_preview = True)
 
     if not DISABLE_CHANNEL_BUTTON:
