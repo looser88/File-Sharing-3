@@ -10,6 +10,7 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
+@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 def extract_name(client: Client, message: Message):
     spl_word = 'S' 
     res = re.split(spl_word, full_str, maxsplit=1)[0]
@@ -18,7 +19,7 @@ def extract_name(client: Client, message: Message):
 # Driver Code
     media = message.video or message.document
     full_str = media.file_name
-    fname = res
+    fname = extract_name(client: Client, message: Message)
 
 
 def find_pic(fname): 
