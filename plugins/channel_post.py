@@ -13,7 +13,6 @@ from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 def extract_name(full_str, spl_word):
-    message = Message
     media = message.video or message.document
     full_str = media.file_name
     spl_word = 'S' 
@@ -30,7 +29,7 @@ def find_pic(extract_name):
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    e_pic = client.send_photo(ECHANNEL_ID, InputMediaPhoto(find_pic), caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, InputMediaPhoto(find_pic), caption=f"🔥please wait....")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
