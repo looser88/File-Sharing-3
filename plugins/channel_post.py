@@ -10,20 +10,16 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
-def extract_name(full_str, search, idx=0):
-    if idx == len(full_str):
-        return ""
-    temp = full_str[:idx+1]
-    if all(char in temp for char in search):
-        return temp
-    else:
-        return extract_name(full_str, search, idx+1)
+def extract_name(client: Client, message: Message):
+    spl_word = 'S' 
+    res = re.split(spl_word, full_str, maxsplit=1)[0]
+    return res
  
 # Driver Code
-media = message.video or message.document
-full_str = media.file_name
-search = "S"
-fname = extract_name(full_str, search, idx+1)[:-2]
+    media = message.video or message.document
+    full_str = media.file_name
+    fname = res
+
 
 def find_pic(fname): 
     if fname == "Olavina.Nildana":
