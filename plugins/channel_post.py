@@ -18,8 +18,8 @@ def extract_name(client: Client, message: Message):
     return res
  
 # Driver Code
-    media = message.video or message.document
-    full_str = media.file_name
+media = message.video or message.document
+full_str = media.file_name
    # fname = extract_name
 
 def find_pic(extract_name): 
