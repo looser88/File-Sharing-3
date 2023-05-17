@@ -3,7 +3,7 @@
 import re
 import asyncio
 from pyrogram import filters, Client
-from pyrogram.types import Message.message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 from pyrogram.errors import FloodWait
 from plugins.link_generator import get_short
 from bot import Bot
