@@ -20,20 +20,19 @@ def extract_name(client: Client, message: Message):
 # Driver Code
     media = message.video or message.document
     full_str = media.file_name
-    fname = extract_name(client: Client, message: Message)
+   # fname = extract_name
 
-
-def find_pic(fname): 
-    if fname == "Olavina.Nildana":
+def find_pic(extract_name): 
+    if extract_name == "Olavina.Nildana.":
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
     else:
-       pic = "https://graph.org/file/954f49350f9b6e52fa545.jpg" 
+       pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
     return pic
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     
-    e_pic = await client.send_photo(ECHANNEL_ID, InputMediaPhoto(find_pic(fname)), caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, InputMediaPhoto(find_pic), caption=f"🔥please wait....")
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
