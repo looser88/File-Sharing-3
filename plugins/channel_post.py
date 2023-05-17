@@ -4,7 +4,6 @@ import re
 import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
-from pyrogram import message
 from pyrogram.errors import FloodWait
 from plugins.link_generator import get_short
 from bot import Bot
@@ -14,6 +13,7 @@ from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 def extract_name(full_str, spl_word):
+    message = Message
     media = message.video or message.document
     full_str = media.file_name
     spl_word = 'S' 
