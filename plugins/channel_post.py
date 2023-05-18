@@ -12,15 +12,15 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name('.S', message.video.file_name):
-  #  media = message.video or message.document
-   # full_str = media.file_name
-  #  spl_word = 'S' 
-    res = re.split('.S', message.video.file_name, maxsplit=1)[0]
+def extract_name(spl_word, full_str):
+   # media = message.video or message.document
+    full_str = message.video.file_name
+    spl_word = 'S' 
+    res = re.split(spl_word, full_str, maxsplit=1)[0]
     return res
 
 def find_pic(extract_name): 
-    if extract_name == "Olavina.Nildana":
+    if extract_name == "Olavina.Nildana.":
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
     else:
        pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
