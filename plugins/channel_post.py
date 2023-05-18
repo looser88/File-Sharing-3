@@ -12,7 +12,7 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name(spl_word, full_str):
+def extract_name(Client, Message, spl_word, full_str):
    # media = message.video or message.document
     full_str = message.video.file_name
     spl_word = 'S' 
