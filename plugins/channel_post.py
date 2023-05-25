@@ -11,25 +11,26 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name(spl_word, m: Message):
-    spl_word = 'S' 
+#@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
+#def extract_name(spl_word, m: Message):
+#    spl_word = 'S' 
    # media = message.video or message.document
   #  full_str = message.video.file_name
-    res = re.split(spl_word, m.video.file_name, maxsplit=1)[0]
-    return res
+ #   res = re.split(spl_word, m.video.file_name, maxsplit=1)[0]
+#    return res
 
-def find_pic(extract_name): 
-    if extract_name == "Olavina_Nildana_2023_":
-       pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
-    else:
-       pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
-    return pic
+#def find_pic(extract_name): 
+#    if extract_name == "Olavina_Nildana_2023_":
+#       pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
+#    else:
+#       pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
+#    return pic
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     reply_text = await message.reply_text("Please Wait...!", quote = True)
-    e_pic = await client.send_photo(ECHANNEL_ID, photo=(find_pic) caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, photo="https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" caption=f"🔥please wait....")
+    await asyncio.sleep(9)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
     except FloodWait as e:
@@ -53,9 +54,9 @@ async def channel_post(client: Client, message: Message):
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
-    #await e_pic.edit(ECHANNEL_ID, photo="https://graph.org/file/db5fd2caa68198b86a621.jpg", caption="✅ Generated wait")
+    
     await reply_text.edit(f"{extract_name}\n <b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1", disable_web_page_preview = True)
-
+    await e_pic.edit(ECHANNEL_ID, photo="https://graph.org/file/db5fd2caa68198b86a621.jpg", caption="✅ Generated wait")
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
 
