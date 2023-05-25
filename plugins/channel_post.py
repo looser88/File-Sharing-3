@@ -12,7 +12,7 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name(spl_word, full_str=Message):
+def extract_name(full_str=(Message), spl_word):
    # media = message.video or message.document
     full_str = message.video.file_name
     spl_word = 'S' 
@@ -20,7 +20,7 @@ def extract_name(spl_word, full_str=Message):
     return res
 
 def find_pic(extract_name): 
-    if extract_name == "Olavina_Nildana_":
+    if extract_name == "Olavina_Nildana_2023_":
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
     else:
        pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
