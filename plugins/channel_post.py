@@ -12,9 +12,9 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name(full_str, spl_word):
+def extract_name(full_str : Message, spl_word):
    # media = message.video or message.document
-    full_str = Message.video.file_name
+    full_str = message.video.file_name
     spl_word = 'S' 
     res = re.split(spl_word, full_str, maxsplit=1)[0]
     return res
