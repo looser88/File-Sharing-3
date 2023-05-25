@@ -11,13 +11,13 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
-#@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-#def extract_name(spl_word, m: Message):
-#    spl_word = 'S' 
-   # media = message.video or message.document
-  #  full_str = message.video.file_name
- #   res = re.split(spl_word, m.video.file_name, maxsplit=1)[0]
-#    return res
+@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
+def extract_name(spl_word, m: Message):
+    spl_word = 'S' 
+    media = message.video or message.document
+    full_str = message.video.file_name
+    res = re.split(spl_word, m.video.file_name, maxsplit=1)[0]
+    return res
 
 #def find_pic(extract_name): 
 #    if extract_name == "Olavina_Nildana_2023_":
