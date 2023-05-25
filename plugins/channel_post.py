@@ -30,7 +30,7 @@ def extract_name(spl_word, m: Message):
 async def channel_post(client: Client, message: Message):
     reply_text = await message.reply_text("Please Wait...!", quote = True)
     e_pic = await client.send_photo(ECHANNEL_ID, photo="https://graph.org/file/9ec8c13d8c10d246a60ba.jpg", caption=f"🔥please wait....")
-    await asyncio.sleep(9)
+    await asyncio.sleep(3)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
     except FloodWait as e:
@@ -48,7 +48,7 @@ async def channel_post(client: Client, message: Message):
 #   today= datetime.datetime.now()
     tomorrow = datetime.now() + timedelta(1)
 #   ptoday= today.strftime("%d - %m - %Y")
-    ptomorrow = tomorrow.strftime("%d⚡%m⚡%Y")
+    ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
     
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
@@ -56,7 +56,7 @@ async def channel_post(client: Client, message: Message):
     
     
     await reply_text.edit(f"✅link generated successfully. \n\n check your \nECHANNEL: https://t.me/+BoY5HamXAd1kOTZl\n\n here your link:\n{Tlink}", disable_web_page_preview = True)
-    await e_pic.edit(f" <b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞:- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1")
+    await e_pic.edit(f" <b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞 :- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1")
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
 
