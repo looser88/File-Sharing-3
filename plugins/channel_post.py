@@ -14,8 +14,8 @@ from datetime import datetime, timedelta
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 def extract_name(spl_word, m: Message):
     spl_word = 'S' 
-    media = message.video or message.document
-    full_str = message.video.file_name
+ #   media = message.video or message.document
+#    full_str = message.video.file_name
     res = re.split(spl_word, m.video.file_name, maxsplit=1)[0]
     return res
 
