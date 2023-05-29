@@ -47,7 +47,7 @@ async def channel_post(client: Client, message: Message):
   
 
     reply_text = await message.reply_text("Please Wait...!", quote = True)
-    e_pic = await client.send_photo(chat_id=f"{chatidis}", photo=f"{pic}", caption=f"🔥please wait....")
+    e_pic = await client.send_photo(f"{chatidis}", photo=f"{pic}", caption=f"🔥please wait....")
     await asyncio.sleep(3)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
