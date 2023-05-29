@@ -31,7 +31,7 @@ from datetime import datetime, timedelta
 async def channel_post(client: Client, message: Message):
     if "Olavina_Nildana" in message.video.file_name:
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
-   else:
+    else:
        pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
   
 
