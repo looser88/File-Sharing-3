@@ -33,11 +33,11 @@ async def channel_post(client: Client, message: Message):
     if "Zee5"or"ZEE5" in media.file_name:
        chatidis = ZEE_ID
     elif "Voot"or"VOOT" in media.file_name:
-       chatidis = VOOT_ID
+         chatidis = VOOT_ID
     elif "HS"or"Hotstar" in media.file_name:
-       chatidis = STAR_ID
+         chatidis = STAR_ID
     else:
-       chatidis = ECHANNEL_ID
+        chatidis = ECHANNEL_ID
         
      #if candition for photo 
     if "Olavina_Nildana" in media.file_name:
