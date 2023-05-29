@@ -1,6 +1,6 @@
 #(©)Codexbotz
 
-import re
+#import re
 import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
@@ -11,14 +11,8 @@ from config import ADMINS, CHANNEL_ID, ECHANNEL_ID, DISABLE_CHANNEL_BUTTON
 from helper_func import encode
 from datetime import datetime, timedelta
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def find_pic(message: Message):
-  if "Olavina.Nildana" in message.video.file_name:
-     pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
-  else:
-     pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
-  return pic
-
+#@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
+#def find_pic(message: Message):
 
   #  spl_word = 'S' 
  #   media = message.video or message.document
@@ -35,8 +29,14 @@ def find_pic(message: Message):
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
+    if "Olavina.Nildana" in message.video.file_name:
+       pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
+   else:
+       pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
+  
+
     reply_text = await message.reply_text("Please Wait...!", quote = True)
-    e_pic = await client.send_photo(ECHANNEL_ID, photo=(find_pic), caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, photo={pic}, caption=f"🔥please wait....")
     await asyncio.sleep(3)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
