@@ -19,7 +19,7 @@ def find_pic(message: Message):
      pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
   return pic
 
-    return pic
+
   #  spl_word = 'S' 
  #   media = message.video or message.document
 #    full_str = message.video.file_name
@@ -36,7 +36,7 @@ def find_pic(message: Message):
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     reply_text = await message.reply_text("Please Wait...!", quote = True)
-    e_pic = await client.send_photo(ECHANNEL_ID, photo="https://graph.org/file/9ec8c13d8c10d246a60ba.jpg", caption=f"🔥please wait....")
+    e_pic = await client.send_photo(ECHANNEL_ID, photo=(find_pic), caption=f"🔥please wait....")
     await asyncio.sleep(3)
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
