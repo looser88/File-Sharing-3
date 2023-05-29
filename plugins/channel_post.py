@@ -29,7 +29,7 @@ from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
-    if "Olavina.Nildana" in message.video.file_name:
+    if "Olavina_Nildana" in message.video.file_name:
        pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
    else:
        pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
