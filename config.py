@@ -18,11 +18,11 @@ APP_ID = int(os.environ.get("APP_ID", "10755921"))
 #Your API Hash from my.telegram.org
 API_HASH = os.environ.get("API_HASH", "d5e49fd3637cba407f17807d31c77977")
 
-#Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001842556179"))
-
-#your edit channel Id
-ECHANNEL_ID = int(os.environ.get("EHANNEL_ID", "-1001748750847"))
+#channel Id
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001842556179")) #db channel 
+ZEE_ID = int(os.environ.get("ZEE_ID", "-1001454521684"))
+VOOT _ID = int(os.environ.get("VOOT _ID","-1001328262780"))
+STAR_ID = int(os.environ.get("STAR_ID", "-1001658231983"))
 
 #OWNER ID
 OWNER_ID = int(os.environ.get("OWNER_ID", "5636224141"))
