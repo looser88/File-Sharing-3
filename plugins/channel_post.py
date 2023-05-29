@@ -12,7 +12,7 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name(msg=Message):
+def extract_name('S', msg=Message):
   #  spl_word = 'S' 
  #   media = message.video or message.document
 #    full_str = message.video.file_name
@@ -50,7 +50,7 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
-    fname = str(extract_name)
+    fname = str(extract_name('S')
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
