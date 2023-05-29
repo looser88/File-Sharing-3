@@ -12,12 +12,19 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name('S', msg=Message):
+def find_pic(message: Message):
+  if "Olavina.Nildana" in message.video.file_name:
+     pic = "https://graph.org/file/db5fd2caa68198b86a621.jpg"
+  else:
+     pic = "https://graph.org/file/9ec8c13d8c10d246a60ba.jpg" 
+  return pic
+
+    return pic
   #  spl_word = 'S' 
  #   media = message.video or message.document
 #    full_str = message.video.file_name
-    res = re.split('S', msg.video.file_name, maxsplit=1)[0]
-    return res
+ #   res = re.split('S', msg.video.file_name, maxsplit=1)[0]
+  #  return res
 
 #def find_pic(extract_name): 
 #    if extract_name == "Olavina_Nildana_2023_":
@@ -50,12 +57,12 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
-    fname = str(extract_name('S')
+    
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
     
-    await reply_text.edit(f"✅link generated successfully. \n\n name :{fname}\n\n check your \nECHANNEL: https://t.me/+BoY5HamXAd1kOTZl\n\n here your link:\n{Tlink}", disable_web_page_preview = True)
+    await reply_text.edit(f"✅link generated successfully. \n\n name :{message.video.file_name}\n\n check your \nECHANNEL: https://t.me/+BoY5HamXAd1kOTZl\n\n here your link:\n{Tlink}", disable_web_page_preview = True)
     await e_pic.edit(f" <b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞 :- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1")
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
