@@ -21,7 +21,7 @@ API_HASH = os.environ.get("API_HASH", "d5e49fd3637cba407f17807d31c77977")
 #channel Id
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001842556179")) #db channel 
 ZEE_ID = int(os.environ.get("ZEE_ID", "-1001454521684"))
-VOOT _ID = int(os.environ.get("VOOT _ID", "-1001328262780"))
+VOOT_ID = int(os.environ.get("VOOT_ID", "-1001328262780"))
 STAR_ID = int(os.environ.get("STAR_ID", "-1001658231983"))
 ECHANNEL_ID = int(os.environ.get("EHANNEL_ID", "-1001748750847"))
 
