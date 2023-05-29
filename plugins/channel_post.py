@@ -12,11 +12,11 @@ from helper_func import encode
 from datetime import datetime, timedelta
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
-def extract_name(spl_word, msg=Message):
-    spl_word = 'S' 
+def extract_name(msg=Message):
+  #  spl_word = 'S' 
  #   media = message.video or message.document
 #    full_str = message.video.file_name
-    res = re.split(spl_word, msg.video.file_name, maxsplit=1)[0]
+    res = re.split('S', msg.video.file_name, maxsplit=1)[0]
     return res
 
 #def find_pic(extract_name): 
@@ -50,12 +50,12 @@ async def channel_post(client: Client, message: Message):
 #   ptoday= today.strftime("%d - %m - %Y")
     ptomorrow = tomorrow.strftime("%d - %m - %Y")
 #   pweek = tomorrow.strftime("%A")
-    Fname = extract_name(spl_word)
+    fname = str(extract_name)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[A]Share URL", url=Tlink)]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("[B]Share URL", url=Tlink)]])
     
     
-    reply_text.edit(f"✅link generated successfully. \n\n name :{Fname}\n\n check your \nECHANNEL: https://t.me/+BoY5HamXAd1kOTZl\n\n here your link:\n{Tlink}", disable_web_page_preview = True)
+    await reply_text.edit(f"✅link generated successfully. \n\n name :{fname}\n\n check your \nECHANNEL: https://t.me/+BoY5HamXAd1kOTZl\n\n here your link:\n{Tlink}", disable_web_page_preview = True)
     await e_pic.edit(f" <b>▬▬▬▬▬▬▬ ❂ ▬▬▬▬▬▬▬▬</b>\n\n🗓𝐃𝐚𝐭𝐞 :- <b>{ptomorrow}</b>\n\n      𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 𝐛𝐲 :- @Dot_serials_bot \n\n                     ⚜️⚜️⚜️⚜️⚜️⚜️\nᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :-\n{Slink}\n{Slink}\n\n     👇👇 𝐇𝐨𝐰 𝐭𝐨 𝐨𝐩𝐞𝐧 𝐥𝐢𝐧𝐤👇👇\nhttps://t.me/+Sb5ro1gyhgY0NWM1\nhttps://t.me/+Sb5ro1gyhgY0NWM1")
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
