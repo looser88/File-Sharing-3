@@ -30,10 +30,10 @@ from datetime import datetime, timedelta
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     media = message.video or message.document
-    if "Zee5"or"ZEE5" in media.file_name:
+    if "Manemagalu" in media.file_name:
        chatidis = ZEE_ID
-    elif "Voot" in media.file_name:
-         chatidis = str("@ultq2")
+    elif "Kendasampige" in media.file_name:
+         chatidis = VOOT_ID
     elif "HS"or"Hotstar" in media.file_name:
          chatidis = STAR_ID
     else:
