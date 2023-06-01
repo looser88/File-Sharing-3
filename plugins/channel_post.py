@@ -31,9 +31,9 @@ from datetime import datetime, timedelta
 async def channel_post(client: Client, message: Message):
     media = message.video or message.document
     if "Zee5"or"ZEE5" in media.file_name:
-       chatidis = int("-1001942664190")
+       chatidis = str("@brollyq")
     elif "Voot"or"VOOT" in media.file_name:
-         chatidis = VOOT_ID
+         chatidis = int("-1001965277713")
     elif "HS"or"Hotstar" in media.file_name:
          chatidis = STAR_ID
     else:
