@@ -30,14 +30,14 @@ from datetime import datetime, timedelta
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
     media = message.video or message.document
-    if "Manemagalu" in media.file_name:
-       chatidis = int("-1001942664190")
-    elif "Kendasampige" in media.file_name:
-         chatidis = int("-1001965277713")
+    if "Zee5" in media.file_name:
+       chatidis = int("-1001454521684")
+    elif "Voot" in media.file_name:
+         chatidis == int("-1001328262780")
     elif "HS"or"Hotstar" in media.file_name:
-         chatidis = STAR_ID
+         chatidis == int("-1001658231983")
     else:
-        chatidis = ECHANNEL_ID
+        chatidis == ECHANNEL_ID
         
      #if candition for photo 
     if "Olavina_Nildana" in media.file_name:
